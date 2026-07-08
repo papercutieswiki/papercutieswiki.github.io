@@ -2,122 +2,116 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Luciano Masala</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            color: white;
-            position: relative; /* Added position relative to body */
-            min-height: 100vh; /* Ensuring the body covers the full height of the viewport */
-        }
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 20px;
-        }
-        .main-content {
-            flex: 1;
-            color: black;
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            max-width: 50%; /* Set max-width to make it half of the container */
-        }
-        .main-content ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .main-content ul li {
-            margin-bottom: 3px;
-            padding-left: 20px;
-        }
-        .sidebar {
-            color: white;
-            background-color: black;
-            padding: 20px;
-            width: 100%;
-            position: absolute; /* Positioning the sidebar absolutely */
-            bottom: 0; /* Aligning it to the bottom of the viewport */
-            left: 0; /* Ensuring it starts from the left edge */
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar ul li {
-            margin-bottom: 3px;
-        }
-        .main-content h1 {
-            margin: 0 0 15px 0;
-        }
-        .message {
-            padding: 10px;
-            background-color: black;
-            color: white;
-            margin-top: 20px;
-        }
-        .about-me-content {
-            color: white;
-            background-color: black;
-            padding: 20px;
-            position: absolute;
-            top: 50%; /* Aligning the top of the content at 50% of the viewport */
-            left: 20px; /* Aligning the left side of the content with a small margin */
-            transform: translateY(-50%); /* Centering the content vertically */
-            width: 80%; /* Adjusting the width of the content */
-            max-width: 600px; /* Setting a maximum width to keep the content readable */
-            text-align: justify;
-        }
-        /* Define SF Pro Display font */
         @font-face {
             font-family: 'SF Pro Display';
             src: url('SF-Pro-Display-Regular.otf') format('opentype');
         }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .header-image {
+            width: 1920px;
+            height: 662px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .nav-container {
+            position: absolute;
+            top: 668px;
+            left: 0;
+            width: 1920px;
+            display: flex;
+            justify-content: center;
+            gap: 180px;
+        }
+
+        .nav-item {
+            position: relative;
+            font-family: 'SF Pro Display', -apple-system, sans-serif;
+            font-size: 24px;
+        }
+
+        .nav-link {
+            color: #808080;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .arrow {
+            font-size: 12px;
+            margin-left: 6px;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+            padding: 10px 0;
+            z-index: 10;
+        }
+
+        .dropdown-menu a {
+            color: #808080;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="main-content">
-            <h1>papercuties</h1>
-            <ul>
-                <li><a href="#">music</a></li>
-                <li><a href="#">social medias</a></li>
-                <li><a href="#" onclick="showAboutMe()">about me</a></li>
-                <li><a href="https://www.upwork.com/freelancers/~0186a7997bf53aeb65" target="_blank">upwork profile</a></li>
-                <li><a href="#" onclick="copyEmailToClipboard(event)">contact me</a></li>
-            </ul>
+
+    <img src="lucianomasala1.png" alt="Luciano Masala Header" class="header-image">
+
+    <div class="nav-container">
+        <div class="nav-item">
+            <a href="#about" class="nav-link">about me</a>
+        </div>
+        
+        <div class="nav-item">
+            <span class="nav-link">my music<span class="arrow">▼</span></span>
+            <div class="dropdown-menu">
+                <a href="#papercuties">papercuties</a>
+                <a href="#marie">marie</a>
+                <a href="#hershel">hershel</a>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <a href="#works" class="nav-link">works</a>
+        </div>
+
+        <div class="nav-item">
+            <a href="#contact" class="nav-link">contact</a>
         </div>
     </div>
-    <div class="about-me-content" id="aboutMeSection">
-        <!-- Text content will be added via JavaScript -->
-    </div>
 
-    <script>
-        function showAboutMe() {
-            var aboutMeText = `I'm a young musician and sound designer from a small town in Italy. Over the span of 5 years in music production, I've worked under 2 different aliases on SoundCloud, roaming through various music genres.\n\n• My Tools\nI primarily use Ableton Live, but I'm also practical with Fruity Loops Studio, Audacity, GarageBand, and Bitwig.\n\n• What I'm handy with\nI can switch through numerous genres, including EDM, RnB, Funk, Lo-Fi, Ambient, Pop (and subgenres), Orchestral, Acoustic, Field Recordings, Acapella, Breakcore, DnB, House, and more. I also worked on a fan game some months ago, where I created all the UI and in-game SFX, including OST, jumpscare sounds, menu and various button beeps, etc.\n\n• Experiences and such\nI've worked under 2 aliases on SoundCloud: "nazuki" (currently on indefinite hiatus) and "papercuties," which is my primary alias for music and related content. I've released approximately 30 tracks over 4 years and have plenty of unreleased projects. I have also been A&R on the dubstep underground music label "Inhalant Audio" for some months before its closure.\n\nCurrently, I am fully dedicated to producing music, and I'm open to any opportunities within my fields.`;
-            var aboutMeDiv = document.getElementById("aboutMeSection");
-            aboutMeDiv.innerHTML = `<p style="font-family: 'SF Pro Display', Arial, sans-serif;">${aboutMeText}</p>`;
-        }
-
-        function copyEmailToClipboard(event) {
-            event.preventDefault();
-            var email = 'buizmc@gmail.com';
-            navigator.clipboard.writeText(email);
-            var message = document.createElement('div');
-            message.classList.add('message');
-            message.innerText = 'Email copied to clipboard!';
-            document.body.appendChild(message);
-            setTimeout(function() {
-                message.style.display = 'none';
-            }, 3000);
-        }
-    </script>
 </body>
 </html>
